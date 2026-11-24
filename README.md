@@ -1,36 +1,30 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DocuMind
 
-## Getting Started
+**"Your documents, understood and organised."**
 
-First, run the development server:
+DocuMind is a full-stack personal document management SaaS built with Next.js 16, TypeScript, Tailwind CSS v4, and SQLite (`node:sqlite`). It lets users securely upload, organise, preview, track, and query warranties, insurance policies, gift cards, vouchers, invoices, receipts, and agreements.
+
+## Features
+
+- **Authentication & User Vaults**: Salted `scrypt` password hashing, HMAC-signed HTTP-only sessions backed by SQLite, profile management, password updates, and per-user data isolation.
+- **Document Management**: Drag-and-drop PDF and image uploads (`PDF`, `PNG`, `JPG`, `WEBP`), manual entries, inline file previews, original downloads, editing, deletion with confirmation, search, multi-filter, sorting, and custom tags.
+- **Intelligent Document Processing**: Server-side PDF text extraction (`unpdf`) and offline image OCR (`tesseract.js` + `@tesseract.js-data/eng`) to detect categories, issuers, purchase/expiry dates, warranty durations, policy/reference numbers, and amounts.
+- **AI Assistant**: Persistent document conversations grounded in stored records and extracted text with clickable document citations, plus optional encrypted OpenAI or Google Gemini API key support in Settings.
+- **Expiry Calendar & Reminders**: Monthly expiry calendar, `.ics` calendar export, automatic expiry reminders based on configurable lead times, custom reminders, snooze/complete workflows, and in-app notification centre.
+- **Responsive Design**: Collapsible desktop sidebar, tablet/mobile slide-over navigation drawer, `Ctrl+K` global search, and responsive layouts across laptop, tablet, and phone viewports.
+
+## Running Locally
+
+```bash
+npm install
+npm run build
+npm run start
+```
+
+Or run in development mode:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Open [http://localhost:3000](http://localhost:3000) in your browser. Local SQLite data (`data/documind.db`) and uploaded files (`data/uploads/`) are created automatically and ignored by git.
